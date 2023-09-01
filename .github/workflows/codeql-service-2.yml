@@ -42,7 +42,7 @@ jobs:
         languages: "go"
 
     - name: build-service-2
-      run: go build service-2/*.go
+      run: cd service-2 && go build .
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2

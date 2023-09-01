@@ -1,9 +1,12 @@
-# This 
+# This workflow will scan all services written in Go only when a *.go file is edited
+
 name: "CodeQL Scan All Go Code"
 
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - '**.go'
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "main" ]

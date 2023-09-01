@@ -2,22 +2,22 @@
 #
 # Make note of the following lines:
 #  11 and 15: this tells the action when to run
-#  41 and 42: This is the command to only build service 1
+#  43 through 45: This tells codeql to only scan the code in the service-3 directory
 #  48: This is the category.  THIS IS SUPER IMPORTANT.  If you don't edit the category
 #  the results will be overwritten when other services/directories are scanned
 #
 
-name: "CodeQL Scan Service-1"
+name: "CodeQL Scan Service-3"
 
 on:
   push:
     branches: [ "main" ]
     paths:
-      - 'service-1/**'
+      - 'service-3/**'
   pull_request:
     branches: [ "main" ]
     paths:
-      - 'service-1/**'
+      - 'service-3/**'
   schedule:
     - cron: '31 2 * * 2'
 
@@ -39,10 +39,11 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
-        languages: "go"
+        languages: "python"
+        config: |
+          paths: 
+          - 'service-3/**'
 
-    - name: build-service-1
-      run: go build service-1/*.go
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2

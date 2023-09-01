@@ -89,6 +89,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		for _, bk := range bks {
 			fmt.Fprintf(w, "%s, %s, %s\n", bk.Title, bk.Author, bk.Read)
 		}
+		bks, err := models.ReadQuery3(read)
+		if err != nil {
+			http.Error(w, http.StatusText(500), 500)
+			return
+		}
+
+		for _, bk := range bks {
+			fmt.Fprintf(w, "%s, %s, %s\n", bk.Title, bk.Author, bk.Read)
+		}
 
 	} else {
 		bks, err := models.AllBooks()

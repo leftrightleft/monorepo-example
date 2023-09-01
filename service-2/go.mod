@@ -1,4 +1,4 @@
-module github.com/leftrightleft/go-monorepo/service-2
+module github.com/leftrightleft/monorepo-example/service-2
 
 go 1.21.0
 

@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/leftrightleft/go-monorepo/service-2/models"
+	"github.com/leftrightleft/monorepo-example/service-2/models"
 
 	_ "github.com/mattn/go-sqlite3"
 )

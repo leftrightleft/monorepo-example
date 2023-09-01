@@ -48,4 +48,4 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
       with:
-        category: "/language:python/service:service-3"
+        category: "service-3"

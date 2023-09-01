@@ -1,0 +1,50 @@
+# This workflow will trigger only when a file in the service-2 directory is edited.
+#
+# Make note of the following lines:
+#  11 and 15: this tells the action when to run
+#  41 and 42: This is the command to only build service 2
+#  48: This is the category.  THIS IS SUPER IMPORTANT.  If you don't edit the category
+#  the results will be overwritten when other services/directories are scanned
+#
+
+name: "CodeQL Scan Service-2"
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'service-2/**'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'service-2/**'
+  schedule:
+    - cron: '31 2 * * 2'
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: 'ubuntu-latest' 
+    timeout-minutes: 360
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Initializes the CodeQL tools for scanning.
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: "go"
+
+    - name: build-service-2
+      run: go build service-2/*.go
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
+      with:
+        category: "/language:${{matrix.language}}/service:service-1"

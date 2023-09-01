@@ -3,7 +3,7 @@
 # Make note of the following lines:
 #  11 and 15: this tells the action when to run
 #  43 through 45: This tells codeql to only scan the code in the service-3 directory
-#  48: This is the category.  THIS IS SUPER IMPORTANT.  If you don't edit the category
+#  51: This is the category.  THIS IS SUPER IMPORTANT.  If you don't edit the category
 #  the results will be overwritten when other services/directories are scanned
 #
 
@@ -48,4 +48,4 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
       with:
-        category: "/language:${{matrix.language}}/service:service-3"
+        category: "/language:python/service:service-3"

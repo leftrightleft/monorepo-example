@@ -46,6 +46,22 @@ func ReadQuery3(r string) ([]Book, error) {
 	return bks, nil
 }
 
+func ReadQuery5(r string) ([]Book, error) {
+	// Fix: rows, err := DB.Query("SELECT * FROM books WHERE read = ?", r)
+	rows, err := DB.Query(fmt.Sprintf("SELECT * FROM books WHERE read = '%s'", r))
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	bks, err := makeBookSlice(rows)
+	if err != nil {
+		return nil, err
+	}
+
+	return bks, nil
+}
+
 func ReadQuery4(r string) ([]Book, error) {
 	// Fix: rows, err := DB.Query("SELECT * FROM books WHERE read = ?", r)
 	rows, err := DB.Query(fmt.Sprintf("SELECT * FROM books WHERE read = '%s'", r))

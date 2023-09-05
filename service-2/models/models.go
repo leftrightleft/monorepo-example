@@ -30,7 +30,7 @@ func AllBooks() ([]Book, error) {
 	return bks, nil
 }
 
-func ReadQuery3(r string) ([]Book, error) {
+func ReadQuery30(r string) ([]Book, error) {
 	// Fix: rows, err := DB.Query("SELECT * FROM books WHERE read = ?", r)
 	rows, err := DB.Query(fmt.Sprintf("SELECT * FROM books WHERE read = '%s'", r))
 	if err != nil {

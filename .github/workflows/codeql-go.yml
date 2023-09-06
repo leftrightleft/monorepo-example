@@ -4,14 +4,14 @@
 name: "CodeQL Scan All Go Code"
 
 on:
-  # push:
-  #   branches: [ "main" ]
-  #   paths:
-  #     - '**.go'
-  # pull_request:
-  #   branches: [ "main" ]
-  #   paths:
-  #     - '**.go'
+  push:
+    branches: [ "main" ]
+    paths:
+      - '**.go'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - '**.go'
   schedule:
     - cron: '31 2 * * 2'
 

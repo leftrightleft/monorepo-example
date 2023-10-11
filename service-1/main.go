@@ -10,7 +10,7 @@ func main() {
 	// Hello world, the web server
 
 	helloHandler := func(w http.ResponseWriter, req *http.Request) {
-		io.WriteString(w, "Hello, woffrld!\n")
+		io.WriteString(w, "Hello, woffrgld!\n")
 	}
 
 	http.HandleFunc("/hello", helloHandler)
